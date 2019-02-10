@@ -19,13 +19,13 @@ namespace ArrayFlattener
         public static IEnumerable<object> Flatten(IEnumerable<object> ArrayOfArrays)
         {
             Func<IEnumerable<object>, IEnumerable<object>> flatten = null;
-            flatten = s => s.SelectMany(x => x is Array ? flatten(((IEnumerable)x).Cast<object>()) : 
+            flatten = s => s.SelectMany(x => x is Array ? flatten(((IEnumerable)x).Cast<object>()) :
             Enumerable.Repeat(x, 1));
 
             return flatten(ArrayOfArrays);
         }
 
-      
+
 
     }
 }
